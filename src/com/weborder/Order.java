@@ -74,6 +74,15 @@ public class Order {
 		int High = 23;
 		int res = rd.nextInt(High-Low)+Low;
 		driver.findElement(By.name("ctl00$MainContent$fmwOrder$TextBox1")).sendKeys("0"+dt+"/"+res);
+			/*OR Below
+			 * 	int mm = rd.nextInt(12 - 1) + 1;
+			    String m = "";
+			    if (mm < 10) {
+			      m = "0" + mm;
+			    } else {
+			      m = "" + mm;
+			    }
+			 */
 		//Process
 		Thread.sleep(2000);
 		driver.findElement(By.id("ctl00_MainContent_fmwOrder_InsertButton")).click();
@@ -82,7 +91,6 @@ public class Order {
 		String actual = driver.findElement(By.id("ctl00_MainContent_fmwOrder")).getText();
 				
 		if(actual.contains(expected)) {
-
 			System.out.println("pass");
 		}else { 
 			System.out.println("fail");
@@ -90,10 +98,8 @@ public class Order {
 			System.out.println("Actual \t"+actual);
 		}
 		
-		
 		Thread.sleep(7000);
 		driver.close();
-		
 	}
 
 }
